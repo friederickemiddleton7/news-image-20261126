@@ -156,29 +156,31 @@ def lead(d):
 
     # Flat container ship pictogram, rectangles and triangles only.
     ox, oy = 762, 205
-    rect(d, ox + 6, oy + 2, ox + 174, oy + 6, fill=HAIR)
-    for col in range(6):
-        for row in range(3):
-            xx = ox + 12 + col * 27
-            yy = oy + 12 + row * 24
-            fill = AMBER if (col + row) % 4 == 0 else TEAL
-            rect(d, xx, yy, xx + 24, yy + 20, fill=fill)
-    rect(d, ox, oy + 86, ox + 180, oy + 100, fill=TEAL)
-    rect(d, ox + 8, oy + 100, ox + 172, oy + 116, fill=NAVY, outline=HAIR, lw=2)
-    rect(d, ox + 18, oy + 104, ox + 48, oy + 111, fill=HAIR)
-    rect(d, ox + 58, oy + 104, ox + 88, oy + 111, fill=HAIR)
-    rect(d, ox + 98, oy + 104, ox + 128, oy + 111, fill=HAIR)
-    rect(d, ox + 138, oy + 104, ox + 162, oy + 111, fill=HAIR)
-    rect(d, ox + 150, oy - 28, ox + 156, oy - 4, fill=AMBER)
-    poly(d, [(ox + 153, oy - 40), (ox + 167, oy - 18),
-             (ox + 139, oy - 18)], fill=AMBER)
+    rect(d, ox, oy + 70, ox + 180, oy + 80, fill=TEAL)          # water
+    rect(d, ox + 10, oy + 56, ox + 170, oy + 70, fill=HAIR)     # deck
+    poly(d, [(ox + 6, oy + 80), (ox + 174, oy + 80),
+             (ox + 160, oy + 106), (ox + 20, oy + 106)], fill=HAIR)  # hull
+    rect(d, ox + 106, oy + 34, ox + 158, oy + 56, fill=AMBER)   # cabin
+    rect(d, ox + 114, oy + 40, ox + 126, oy + 50, fill=NAVY)    # cabin window
+    rect(d, ox + 134, oy + 40, ox + 146, oy + 50, fill=NAVY)
+    rect(d, ox + 70, oy + 10, ox + 78, oy + 46, fill=HAIR)      # mast
+    poly(d, [(ox + 74, oy - 4), (ox + 90, oy + 20),
+             (ox + 58, oy + 20)], fill=AMBER)                    # arrow
+    for col in range(4):                                        # containers
+        for row in range(2):
+            xx = ox + 14 + col * 34
+            yy = oy + 14 + row * 26
+            fill = AMBER if (col + row) % 3 == 0 else TEAL
+            rect(d, xx, yy, xx + 30, yy + 22, fill=fill)
+    draw_text(d, ox + 10, oy + 112, "TARIFF", BOLD, 19, AMBER,
+              clip=clip, label="pictogram-tariff")
 
 
 GRID = [
     ("EUR \u00b7 KYIV", "RUSSIAN STRIKE HITS KYIV MALL"),
     ("AMR \u00b7 NEW YORK", "NASDAQ SLIDES 4%; TECH FALLS"),
     ("ME \u00b7 GAZA CITY", "ISRAEL KILLS HAMAS CHIEF"),
-    ("ME \u00b7 JIZAN", "HOUTHI HITS JAZAN PORT"),
+    ("ME \u00b7 JAZAN", "HOUTHI HITS JAZAN PORT"),
     ("AFR \u00b7 CAIRO", "FUEL TANKER CRASH KILLS 30"),
     ("APAC \u00b7 JIUQUAN", "FIRST PAKISTANI IN SPACE"),
     ("APAC \u00b7 CANBERRA", "AUSTRALIA INFLATION 4.9%"),
